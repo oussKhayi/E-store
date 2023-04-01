@@ -30,28 +30,28 @@ export function addToCart(category ,id){
         payload: {category:category, id:id}
     }
 }
-export function removeFromCart(id){
+export function removeFromCart(category, id){
     return{
         type:types.REMOVE_FROM_CART,
-        payload:id
+        payload:{category:category, id:id}
     }
 }
-export function incrProduct(id){
+export function incrProduct(category,id){
     return{
         type:types.INCR_PRODUCT,
-        payload:id
+        payload:{category:category, id:id}
     }
 }
-export function decrProduct(id){
+export function decrProduct(category, id){
     return{
         type:types.DECR_PRODUCT,
-        payload:id
+        payload:{category:category, id:id}
     }
 }
-export function setQnt(id, v){
+export function setQnt(category, id, v){
     return{
         type:types.SETQNT,
-        payload:{id:id,v:v}
+        payload:{category:category, id:id,v:v}
     }
 }
 export function emptyCart(){

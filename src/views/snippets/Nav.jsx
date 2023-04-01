@@ -22,7 +22,7 @@ const Nav = () => {
         :''}
     </a>
 
-    <a className="navbar-brand" href="http://127.0.0.1:3000/" style={{ fontWeight: 'bolder'}}>E-Digital</a>
+    <a className="navbar-brand" href="/" style={{ fontWeight: 'bolder'}}><img src="./logo.png" className="img-fluid rounded-top p-0" width={100} /></a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i className="fa fa-bars"></i>
     </button>
