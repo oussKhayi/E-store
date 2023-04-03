@@ -5,7 +5,6 @@ import App from '../style/App.css'
 
 const Carousel = () => {
 
-  // const thisProduct =useRef()
   const data = useSelector(state=>state)
   const dispatch = useDispatch()
   
@@ -13,8 +12,6 @@ const Carousel = () => {
     dispatch(addToCart(category ,id))
     console.log(category, id)
   }
-
-// return(<></>)
 
   return ( <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner col-8">

@@ -24,6 +24,13 @@ import * as types from "./typeActions";
 // ---------------------------------
 
 // USERS PART START
+export function initialState(){
+    return{
+        type: types.INITIAL_STATE,
+        payload: {}
+    }
+}
+
 export function addToCart(category ,id){
     return{
         type: types.ADD_TO_CART,

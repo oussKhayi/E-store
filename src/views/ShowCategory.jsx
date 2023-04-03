@@ -55,7 +55,7 @@ function ShowCategory(props) {
   return (
     <div className="container p-4">
       <h2 className="fw-bold text-center py-2 mb-3">
-        This the available {props.cat}
+        This is the available {props.cat}
       </h2>
       <div className="row row-cols-2 row-cols-md-4 g-4">
         {myCategory.content.map((product, index) => (

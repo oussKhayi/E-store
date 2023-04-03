@@ -1,57 +1,95 @@
-import React from "react";
 import * as types from "./typeActions";
+
+// import React, { useEffect, useState } from "react";
+// import axios, { Axios } from "axios";
+
+// function Test (){
+//   const [data, setData] = useState({});
+//   useEffect(() => {
+//     axios.get("http://localhost:3010").then((response) => {
+//       setData(response.data);
+//     });
+//     console.table(data);
+//   }, []);
+// }
+
+const dbState = { cart: [], products: [] };
 
 const initState = {
   users: {
     userName: "user-1",
     cart: [
       {
-        id: 1,
-        name: "PACKARD BELL CELERON",
-        description: "PACKARD",
+        id: 1090,
+        name: "Logitech MX Anywhere 3 Mouse",
+        description: "Logitech",
         image:
-          "https://thefoschini.vtexassets.com/arquivos/ids/42043584-800-800?v=638141463306770000&width=800&height=800&aspect=true",
+          "https://thefoschini.vtexassets.com/arquivos/ids/43936136-800-800?v=638145677088370000&width=800&height=800&aspect=true",
         price: 49,
-        newPrice: 0,
+        newPrice: 49,
         quantity: 100,
         cartQnt: 1,
-        category: "laptops",
+        category: "accessoires",
       },
       {
-        id: 2341,
-        name: "PACKARD BELL CELERON",
-        description: "PACKARD",
+        id: 1091,
+        name: "Logitech MK470 Wireless Keyboard and Mouse Combo",
+        description: "Logitech",
         image:
-          "https://thefoschini.vtexassets.com/arquivos/ids/42043584-800-800?v=638141463306770000&width=800&height=800&aspect=true",
-        price: 49,
-        newPrice: 0,
-        quantity: 100,
+          "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
+        price: 100,
+        newPrice: 100,
+        quantity: 30,
         cartQnt: 1,
-        category: "laptops",
+        category: "accessoires",
       },
       {
-        id: 631,
-        name: "PACKARD BELL CELERON",
-        description: "PACKARD",
+        id: 1091,
+        name: "Logitech MK470 Wireless Keyboard and Mouse Combo",
+        description: "Logitech",
         image:
-          "https://thefoschini.vtexassets.com/arquivos/ids/42043584-800-800?v=638141463306770000&width=800&height=800&aspect=true",
-        price: 49,
-        newPrice: 0,
-        quantity: 100,
+          "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
+        price: 100,
+        newPrice: 100,
+        quantity: 30,
         cartQnt: 1,
-        category: "laptops",
+        category: "accessoires",
       },
       {
-        id: 871,
-        name: "PACKARD BELL CELERON",
-        description: "PACKARD",
+        id: 1091,
+        name: "Logitech MK470 Wireless Keyboard and Mouse Combo",
+        description: "Logitech",
         image:
-          "https://thefoschini.vtexassets.com/arquivos/ids/42043584-800-800?v=638141463306770000&width=800&height=800&aspect=true",
-        price: 49,
-        newPrice: 0,
-        quantity: 100,
+          "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
+        price: 100,
+        newPrice: 100,
+        quantity: 30,
         cartQnt: 1,
-        category: "laptops",
+        category: "accessoires",
+      },
+      {
+        id: 1092,
+        name: "Apple Airtag (4 Pack)",
+        description: "Apple",
+        image:
+          "https://thefoschini.vtexassets.com/arquivos/ids/43893853-800-800?v=638145571122370000&width=800&height=800&aspect=true",
+        price: 999,
+        newPrice: 999,
+        quantity: 30,
+        cartQnt: 1,
+        category: "accessoires",
+      },
+      {
+        id: 2092,
+        name: "Beats Fit Pro True Wireless Earbuds",
+        description: "Earbuds",
+        image:
+          "https://thefoschini.vtexassets.com/arquivos/ids/42103565-800-800?v=638141535753930000&width=800&height=800&aspect=true",
+        price: 999,
+        newPrice: 999,
+        quantity: 30,
+        cartQnt: 1,
+        category: "accessoires",
       },
     ],
   },
@@ -66,7 +104,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42043584-800-800?v=638141463306770000&width=800&height=800&aspect=true",
           price: 49,
-          newPrice: 0,
+          newPrice: 49,
           quantity: 100,
           cartQnt: 1,
           category: "laptops",
@@ -78,7 +116,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42883928-800-800?v=638143171773670000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "laptops",
@@ -90,7 +128,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42883928-800-800?v=638143171773670000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "laptops",
@@ -102,7 +140,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42883928-800-800?v=638143171773670000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "laptops",
@@ -114,7 +152,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42148295-800-800?v=638141582804300000&width=800&height=800&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "laptops",
@@ -126,14 +164,13 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/43948403-800-800?v=638145799544030000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "laptops",
         },
       ],
     },
-
     {
       name: "tv",
       content: [
@@ -144,7 +181,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42837110-800-800?v=638143108234630000&width=800&height=800&aspect=true",
           price: 49,
-          newPrice: 0,
+          newPrice: 49,
           quantity: 100,
           cartQnt: 1,
           category: "tv",
@@ -156,7 +193,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42291670-800-800?v=638141772989200000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "tv",
@@ -168,7 +205,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42291670-800-800?v=638141772989200000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "tv",
@@ -180,7 +217,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42291670-800-800?v=638141772989200000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "tv",
@@ -192,7 +229,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42467615-800-800?v=638142048106570000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "tv",
@@ -204,7 +241,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42176931-800-800?v=638141613185100000&width=800&height=800&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "tv",
@@ -222,7 +259,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42946422-800-800?v=638143290482600000&width=800&height=800&aspect=true",
           price: 49,
-          newPrice: 0,
+          newPrice: 49,
           quantity: 100,
           cartQnt: 1,
           category: "phones",
@@ -234,7 +271,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42772959-800-800?v=638142823169530000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "phones",
@@ -246,7 +283,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42772959-800-800?v=638142823169530000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "phones",
@@ -258,7 +295,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42772959-800-800?v=638142823169530000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "phones",
@@ -270,7 +307,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42649309-800-800?v=638142459911500000&width=800&height=800&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "phones",
@@ -282,7 +319,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42700484-600-600?v=638142604136900000&width=600&height=600&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "phones",
@@ -300,7 +337,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/43936136-800-800?v=638145677088370000&width=800&height=800&aspect=true",
           price: 49,
-          newPrice: 0,
+          newPrice: 49,
           quantity: 100,
           cartQnt: 1,
           category: "accessoires",
@@ -312,7 +349,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "accessoires",
@@ -324,7 +361,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "accessoires",
@@ -336,7 +373,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42739727-800-800?v=638142707881870000&width=800&height=800&aspect=true",
           price: 100,
-          newPrice: 0,
+          newPrice: 100,
           quantity: 30,
           cartQnt: 1,
           category: "accessoires",
@@ -348,7 +385,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/43893853-800-800?v=638145571122370000&width=800&height=800&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "accessoires",
@@ -360,7 +397,7 @@ const initState = {
           image:
             "https://thefoschini.vtexassets.com/arquivos/ids/42103565-800-800?v=638141535753930000&width=800&height=800&aspect=true",
           price: 999,
-          newPrice: 0,
+          newPrice: 999,
           quantity: 30,
           cartQnt: 1,
           category: "accessoires",
@@ -427,12 +464,14 @@ function reducer(state = initState, action) {
         users: {
           ...state.users,
           cart: [
-            ...state.users.cart.filter((i)=>i !==
-              state.users.cart.find(
-                (p) =>
-                  p.category === action.payload.category &&
-                  parseInt(p.id) === parseInt(action.payload.id)
-              )
+            ...state.users.cart.filter(
+              (i) =>
+                i !==
+                state.users.cart.find(
+                  (p) =>
+                    p.category === action.payload.category &&
+                    parseInt(p.id) === parseInt(action.payload.id)
+                )
             ),
           ],
         },
@@ -499,5 +538,5 @@ export default reducer;
 
 //     let products =[
 //         {id:1, name:'Product 1', description:'product number 1', image:'', price:49 ,newPrice:0, quantity:100},
-//         {id:2, name:'Product 2', description:'product number 2', image:'', price:100 ,newPrice:0, quantity:30}
-// ]
+//         {id:2, name:'Product 2', description:'product number 2', image:'', price:49 ,newPrice:0, quantity:30}
+// ]100

@@ -1,10 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as types from "../Redux/actions";
+import axios from "axios";
+
+// function Test (){
+//   const [data, setData] = useState({});
+//   useEffect(() => {
+//     axios.get("http://localhost:3010").then((response) => {
+//       setData(response.data);
+//     });
+//     console.table(data);
+//   }, []);
+// }
 
 export function Cart() {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  // const [myCArt, setMyCArt] = useState([]);
+  const [myProducts, setMyProducts] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:3010/cart").then((response) => {
+  //     setMyCArt(response.data);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:3010/products").then((response) => {
+  //     setMyProducts(response.data);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   console.table(myCArt);
+  //   console.table(myProducts);
+  // }, [myCArt, myCArt]);
 
   function handleClick(e) {
     const cart = data.users.cart;
@@ -12,8 +43,8 @@ export function Cart() {
     const id = parseInt(e.target.getAttribute("data-id"));
     const value = e.target.value;
 
-    console.log(e.target);
-    console.table({ value: value, category: cat, id: id });
+    // console.log(e.target);
+    // console.table({ value: value, category: cat, id: id });
 
     if (!cart.find((i) => i.id === id)) {
       if (value === "addToCart") {
@@ -31,9 +62,13 @@ export function Cart() {
       }
     }
   }
+  const priceTotal = data.users.cart.reduce(function (a, b) {
+    return a + b.price * b.cartQnt;
+  }, 0);
+  console.log("total is : " + priceTotal);
   return (
     <>
-      <p>Test buttons with handleClick</p>
+      {/* <p>Test buttons with handleClick</p>
 
       <button
         className="btn btn-primary"
@@ -43,7 +78,7 @@ export function Cart() {
         onClick={(e) => handleClick(e)}
       >
         Add
-      </button>
+      </button> */}
 
       <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
         <div className="container h-100 py-5">
@@ -73,7 +108,11 @@ export function Cart() {
                               <hr className="my-4" />
                               <div className="row mb-4 d-flex justify-content-between align-items-center">
                                 <div className="col-md-2 col-lg-2 col-xl-2">
-                                  {/* <img src={product.image} className="img-fluid rounded-3" alt="product"/> */}
+                                  <img
+                                    src={product.image}
+                                    height={100}
+                                    width={100}
+                                  />
                                 </div>
                                 <div className="col-md-3 col-lg-3 col-xl-3">
                                   <h6 className="text-muted">
@@ -111,8 +150,13 @@ export function Cart() {
                                     +{/* <i className="fas fa-plus" /> */}
                                   </button>
                                 </div>
-                                <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                  <h6 className="mb-0">€ {product.price}</h6>
+                                <div className="col-md-3 px-0 col-lg-2 col-xl-2 offset-lg-1">
+                                  <h6 className="mb-4">
+                                    €{" "}
+                                    {(product.price * product.cartQnt).toFixed(
+                                      2
+                                    )}
+                                  </h6>
                                 </div>
                                 <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                                   <button
@@ -120,7 +164,10 @@ export function Cart() {
                                     value="removeFromCart"
                                     data-cat={product.category}
                                     data-id={product.id}
-                                    onClick={(e) => handleClick(e)}
+                                    onClick={(e) => {
+                                      window.confirm("Are you sure") &&
+                                        handleClick(e);
+                                    }}
                                   >
                                     X{/* <i className="fas fa-times" /> */}
                                   </button>
@@ -148,7 +195,9 @@ export function Cart() {
                         style={{ backgroundColor: "#e1f5fe" }}
                       >
                         <h5 className="fw-bold mb-0">Total:</h5>
-                        <h5 className="fw-bold mb-0">{null}$</h5>
+                        <h5 className="fw-bold mb-0">
+                          {priceTotal.toFixed(2)}$
+                        </h5>
                         {data.users.cart.length >= 1 ? (
                           <button
                             className="btn btn-danger"
@@ -231,10 +280,6 @@ export function Cart() {
                             </div>
                           </div>
                         </div>
-                        <p className="mb-5">
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit <a href="#!">obcaecati sapiente</a>.
-                        </p>
                         <button
                           type="button"
                           className="btn btn-primary btn-block btn-lg"
@@ -245,7 +290,7 @@ export function Cart() {
                           className="fw-bold mb-5"
                           style={{ position: "absolute", bottom: 0 }}
                         >
-                          <a hrebtnf="/">
+                          <a href="/">
                             {/* <i className="fas fa-angle-left me-2" /> */}
                             Back to shopping
                           </a>
